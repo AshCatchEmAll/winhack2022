@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:wespark_form/add_project_request.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: AddProjectRequest(),
     );
   }
 }
