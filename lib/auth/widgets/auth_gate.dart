@@ -1,0 +1,44 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutterfire_ui/auth.dart';
+import 'package:wespark/home/pages/home_page.dart';
+import 'package:wespark/home/widgets/project_board.dart';
+
+class AuthGate extends StatelessWidget {
+  const AuthGate({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, snapshot) {
+        // User is not signed in
+        if (!snapshot.hasData) {
+          return SignInScreen(
+              sideBuilder: (context, constraints) {
+                return  const Center(
+                  child:  Padding(
+                    padding:  EdgeInsets.all(20),
+                    child:Text("WE SPARK ✨",style: TextStyle(fontSize: 30),)
+                  ),
+                );
+              },
+              headerBuilder: (context, constraints, shrinkOffset) {
+                return const Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: AspectRatio(aspectRatio: 1, child: Text("✨")),
+                );
+              },
+              providerConfigs: [EmailProviderConfiguration()]);
+        }
+
+        // Render your application if authenticated
+        return HomePage();
+      },
+    );
+  }
+
+  Future getAuth() async {
+    return FirebaseAuth.instance.currentUser;
+  }
+}
