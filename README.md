@@ -1,4 +1,4 @@
-<pre><div align="center"><h2>🏆😄 The Rubey Price Winner for Mountain Madness Hackathon 2021 😄🏆</h2></div></pre>
+
 <div align="center"><h1>Spark</h1></div>
 <div align="center"><h3>Automation of volunteer activity for We-Spark</h3></div>
 
